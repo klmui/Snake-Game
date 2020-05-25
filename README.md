@@ -1,6 +1,8 @@
 # Snake-Game 🐍
 Classic Snake Game created using HTML, CSS, JavaScript, PHP, and Bootstrap. Play and earn a top spot in either easy, medium, or hard mode!
 
+Play now: https://cool-snake-game.herokuapp.com/
+
 ## Run Locally
 
 1. Clone this repository.

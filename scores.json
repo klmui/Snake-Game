@@ -1,6 +1,6 @@
 [
     {
-        "name": "null",
+        "name": "Kenny",
         "score": "0",
         "mode": "hard"
     },
@@ -15,27 +15,27 @@
         "mode": "hard"
     },
     {
-        "name": "null",
-        "score": "0",
-        "mode": "medium"
-    },
-    {
-        "name": "null",
-        "score": "0",
-        "mode": "medium"
-    },
-    {
-        "name": "null",
+        "name": "Kenny2",
         "score": "0",
         "mode": "medium"
     },
     {
         "name": "Kenny",
-        "score": "2",
-        "mode": "easy"
+        "score": "0",
+        "mode": "medium"
     },
     {
         "name": "null",
+        "score": "0",
+        "mode": "medium"
+    },
+    {
+        "name": "null",
+        "score": "0",
+        "mode": "easy"
+    },
+    {
+        "name": "Kenny",
         "score": "0",
         "mode": "easy"
     },
