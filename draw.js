@@ -9,6 +9,8 @@ var snake;
 
 var interval = 200;
 
+var setupVar;
+
 function setupScoreboard() {
   // Get top players
   $.ajax({
@@ -50,8 +52,9 @@ function setup() {
   fruit = new Fruit();
   fruit.pickLocation();  
 
+  clearInterval(setupVar);
   // Change setInterval time for difficulty
-  window.setInterval(() => {
+  this.setupVar = window.setInterval(() => {
     // Clear the entire snake
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     fruit.draw();

@@ -34,7 +34,7 @@
           <h1 class="welcomeText">Welcome to the <em>Snake Game</em> 🐍</h1>
           <div class="modes">
             <button type="button" class="btn btn-outline-success mr-3" id="easyBtn" onclick="easyClick()">Easy</button>
-            <button type="button" class="btn btn-outline-info mr-3" id="mediumBtn" onclick="mediumClick()">Medium</button>
+            <button type="button" class="btn btn-outline-warning mr-3" id="mediumBtn" onclick="mediumClick()">Medium</button>
             <button type="button" class="btn btn-outline-danger" id="hardBtn" onclick="hardClick()">Hard</button>
           </div>
           <h2 class="score"></h2>
@@ -140,8 +140,8 @@
         $("#easyBtn").removeClass('btn btn-success');
         $("#easyBtn").addClass('btn btn-outline-success');
       } else if (currentMode === "medium") {
-        $("#mediumBtn").removeClass('btn btn-info');
-        $("#mediumBtn").addClass('btn btn-outline-info');
+        $("#mediumBtn").removeClass('btn btn-warning');
+        $("#mediumBtn").addClass('btn btn-outline-warning');
       } else if (currentMode === "hard") {
         $("#hardBtn").removeClass('btn btn-danger');
         $("#hardBtn").addClass('btn btn-outline-danger');
@@ -152,13 +152,13 @@
         $("#easyBtn").addClass('btn btn-success');
         interval = 230;
       } else if (newMode === "medium") {
-        $("#mediumBtn").removeClass('btn btn-outline-info');
-        $("#mediumBtn").addClass('btn btn-info');
-        interval = 215;
+        $("#mediumBtn").removeClass('btn btn-outline-warning');
+        $("#mediumBtn").addClass('btn btn-warning');
+        interval = 190;
       } else if (newMode === "hard") {
         $("#hardBtn").removeClass('btn btn-outline-danger');
         $("#hardBtn").addClass('btn btn-danger');
-        interval = 200;
+        interval = 150;
       }
 
       mode = newMode;
