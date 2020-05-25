@@ -41,6 +41,7 @@ canvas {
   font-weight: 500;
   margin-top: 25px;
   font-size: x-large;
+  display: none;
 }
 
 .modal {

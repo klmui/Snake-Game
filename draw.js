@@ -9,11 +9,46 @@ var snake;
 
 var interval = 200;
 
+function setupScoreboard() {
+  // Get top players
+  $.ajax({
+    type: 'GET',
+    url: './topUsers.php',
+    dataType: 'json',
+    success: function (users) {
+      $.each(users, function (index, user) {
+        addPlayer(user);
+      });
+    },
+    error: function() {
+      alert('Error loading top players :(');
+    }
+  });
+}
+setupScoreboard();
+
+function addPlayer(user) {
+  var list = document.getElementById(user.mode);
+  if (user.mode === 'hard') {
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(user.name + ' - ' + user.score));
+    list.appendChild(entry);
+  } else if (user.mode === 'medium') {
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(user.name + ' - ' + user.score));
+    list.appendChild(entry);
+  } else if (user.mode === 'easy') {
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(user.name + ' - ' + user.score));
+    list.appendChild(entry);
+  }
+}
+
 // Wrap it in parenthesis and put parenthesis after function to call right away
 function setup() {
   snake = new Snake();
   fruit = new Fruit();
-  fruit.pickLocation();
+  fruit.pickLocation();  
 
   // Change setInterval time for difficulty
   window.setInterval(() => {

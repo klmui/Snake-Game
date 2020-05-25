@@ -5,6 +5,7 @@ function Snake() {
   this.ySpeed = 0;
   this.total = 0;
   this.tail = [];
+  this.mode = 'easy';
 
   this.draw = function () {
     ctx.fillStyle = "#FFFFFF";
@@ -98,11 +99,51 @@ function Snake() {
   }
 
   this.checkCollision = function() {
+    var topScore = false;
     for (var i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
+        // Check if score is a top score
+        $.ajax({
+          type: 'GET',
+          url: './topUsers.php',
+          dataType: 'json',
+          success: function (users) {
+            $.each(users, function (index, user) {
+              if (user.mode === this.mode) {
+                if (snake.total >= user.score) {
+                  topScore = true;
+                  // Send put request to update score board
+                  $.ajax({
+                    type: 'PUT',
+                    url: 'topUsers.php' + index,
+                    data: {
+                      user: user
+                    },
+                    success: function () {
+
+                    },
+                    error: function() {
+                      alert('Error updating scoreboard :(');
+                    }
+                  });
+                }
+              }
+            });
+          },
+          error: function() {
+            alert('Error loading top players :(');
+          }
+        });
+
+
         // Show modal
-        $("#gameOver").modal("show");
-        $(".modal-body").text("You died! Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
+        if (topScore) {
+          $("#gameOver").modal("show");
+          $(".modal-body").text("You died! Your score is " + snake.total + "! Congrats on earning a top spot!");
+        } else {
+          $("#gameOver").modal("show");
+          $(".modal-body").text("You died! Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
+        }
 
         resetGame();
       }  
