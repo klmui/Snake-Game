@@ -9,21 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="favicon.ico">
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body onload="playAudio()">
     <div class="container">
       <div class="row">
         <div class="col-2">
           <div class="controls">
-            <p>Use the arrow keys to move the snake.</p>
             <p>Grow bigger by eating the red apple.</p>
             <p>Don't run into yourself!</p>
+            <p>Use the arrow keys to move the snake.</p>
+            <i style="font-size: 48px; margin-top: 25px;" class="fa fa-arrow-up"></i>
+            <div>
+              <i style="font-size: 48px;" class="fa fa-arrow-left"></i>
+              <i style="font-size: 48px;" class="fa fa-arrow-down"></i>
+              <i style="font-size: 48px;" class="fa fa-arrow-right"></i>
+            </div>
           </div>
         </div>
+
         <div class="col-8">
-          <h1 class="welcomeText">Welcome to the Snake Game 🐍</h1>
+          <h1 class="welcomeText">Welcome to the <em>Snake Game</em> 🐍</h1>
           <h2 class="score"></h2>
           <div class="canvasContainer">
             <canvas class="canvas" height="300" width="300"></canvas>

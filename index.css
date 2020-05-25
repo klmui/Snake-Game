@@ -58,3 +58,7 @@ canvas {
   text-align: center;
   margin-top: 250px;
 }
+
+.clicked {
+  color: lightcoral;
+}
