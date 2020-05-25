@@ -63,7 +63,6 @@ function setup() {
     }
 
     snake.checkCollision();
-    console.log(interval);
     document.querySelector('.score').innerText = "Score: " + snake.total;
   }, interval);
 };

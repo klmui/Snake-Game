@@ -5,7 +5,7 @@ function Snake() {
   this.ySpeed = 0;
   this.total = 0;
   this.tail = [];
-  this.mode = 'easy';
+  this.mode = "easy";
 
   this.draw = function () {
     ctx.fillStyle = "#FFFFFF";
@@ -99,54 +99,73 @@ function Snake() {
   }
 
   this.checkCollision = function() {
-    var topScore = false;
     for (var i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
         // Check if score is a top score
-        $.ajax({
-          type: 'GET',
-          url: './topUsers.php',
-          dataType: 'json',
-          success: function (users) {
-            $.each(users, function (index, user) {
-              if (user.mode === this.mode) {
-                if (snake.total >= user.score) {
-                  topScore = true;
-                  // Send put request to update score board
-                  $.ajax({
-                    type: 'PUT',
-                    url: 'topUsers.php' + index,
-                    data: {
-                      user: user
-                    },
-                    success: function () {
-
-                    },
-                    error: function() {
-                      alert('Error updating scoreboard :(');
-                    }
-                  });
-                }
-              }
-            });
-          },
-          error: function() {
-            alert('Error loading top players :(');
-          }
-        });
-
-
-        // Show modal
-        if (topScore) {
-          $("#gameOver").modal("show");
-          $(".modal-body").text("You died! Your score is " + snake.total + "! Congrats on earning a top spot!");
-        } else {
-          $("#gameOver").modal("show");
-          $(".modal-body").text("You died! Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
-        }
-
-        resetGame();
+        this.endGame();
+        return;
       }  
     }
+  }
+
+  this.endGame = function() {
+    var modeAtFinished = this.mode;
+    total = this.total;
+    $.ajax({
+      type: 'GET',
+      url: './topUsers.php',
+      dataType: 'json',
+      success: function (users) {
+        let counter = 0;
+        for (let index = 0; index < users.length; index++) {
+          // Note that 'this' refers to user
+          if (users[index].mode === modeAtFinished) {
+            console.log(total);
+            console.log(users[index].score);
+            if (total >= users[index].score) {
+              console.log("RETURNED " + index);
+              if (index > 0 && counter == 0) {
+                counter++;
+                // Update at index
+                var name = prompt("Congrats on earning a top spot! Please enter your name.");
+          
+                // Send put request to update score board
+                $.ajax({
+                  type: 'PUT',
+                  url: 'topUsers.php/' + index,
+                  data: {
+                    name: name,
+                    score: total                    
+                  },
+                  success: function () { 
+                    $("#gameOver").modal("show");
+                    $(".modal-body").text("Your score is " + total + "! Congrats " + name + " on earning a top spot!");
+                    resetGame();
+                    //setupScoreboard()
+                  },
+                  error: function() {
+                    alert('Error updating scoreboard :(');
+                          
+                  },
+                  error: function() {
+                    alert('Error loading top players :(');
+                  }
+                });
+              } else {
+                  // Show modal
+                  $("#gameOver").modal("show");
+                  $(".modal-body").text("Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
+                  
+                  resetGame();
+                  //setupScoreboard()
+              }
+            }
+          }
+        }
+      },
+      error: function() {
+        alert('Error loading top players :(');
+      }
+    });
   }
 }
