@@ -6,7 +6,6 @@ function Snake() {
   this.total = 0;
   this.tail = [];
 
-
   this.draw = function () {
     ctx.fillStyle = "#FFFFFF";
 
@@ -52,18 +51,39 @@ function Snake() {
       case "Up":
         this.xSpeed = 0;
         this.ySpeed = -scale * 1;
+        $("#up").addClass("clicked");
         break;
       case "Down":
         this.xSpeed = 0;
         this.ySpeed = scale * 1;
+        $("#down").addClass("clicked");
         break;
       case "Left":
         this.xSpeed = -scale * 1;
         this.ySpeed = 0;
+        $("#left").addClass("clicked");
         break;
       case "Right":
         this.xSpeed = scale * 1;
         this.ySpeed = 0;
+        $("#right").addClass("clicked");
+        break;
+    }
+  }
+  
+  this.removeClicked = function(direction) {
+    switch(direction) {
+      case "Up":
+        $("#up").removeClass("clicked");
+        break;
+      case "Down":
+        $("#down").removeClass("clicked");
+        break;
+      case "Left":
+        $("#left").removeClass("clicked");
+        break;
+      case "Right":
+        $("#right").removeClass("clicked");
         break;
     }
   }

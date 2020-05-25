@@ -27,10 +27,15 @@ var snake;
 
     snake.checkCollision();
     document.querySelector('.score').innerText = "Score: " + snake.total;
-  }, 250);
+  }, 200);
 }());
 
 window.addEventListener('keydown', ((event) => {
   const direction = event.key.replace('Arrow', '');
   snake.changeDirection(direction);
+}));
+
+window.addEventListener('keyup', ((event) => {
+  direction = event.key.replace('Arrow', '');
+  snake.removeClicked(direction);
 }));
