@@ -12,20 +12,58 @@
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
+  <body onload="playAudio()">
     <div class="container">
       <div class="row">
-        <div class="col-11">
+        <div class="col-2">
+          <div class="controls">
+            <p>Use the arrow keys to move the snake.</p>
+            <p>Grow bigger by eating the red apple.</p>
+            <p>Don't run into yourself!</p>
+          </div>
+        </div>
+        <div class="col-8">
           <h1 class="welcomeText">Welcome to the Snake Game 🐍</h1>
           <h2 class="score"></h2>
           <div class="canvasContainer">
             <canvas class="canvas" height="300" width="300"></canvas>
           </div>
+          <div class="audio">
+            <h3>Epic Gamer Music</h3>
+            <audio controls id="myAudio">
+              <source src="Long_Road.mp3" type="audio/ogg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
         </div>
   
-        <div class="col-1 sideCol">
+        <div class="col-2 sideCol">
           <div class="sideContent">
-            <h1>hi</h1>
+            <h2 style="white-space: nowrap;">Top Players - Hard Mode</h2>
+            <ol class="topPlayers">
+              <li>
+                hi
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="gameOver" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Play Again</button>
           </div>
         </div>
       </div>
@@ -40,4 +78,10 @@
   <script type="text/javascript" src="fruit.js"></script>
   <script type="text/javascript" src="snake.js"></script>
   <script type="text/javascript" src="draw.js"></script>
+  <script>
+    var x = document.getElementById("myAudio"); 
+    function playAudio() {
+      x.play();
+    }
+  </script>
 </html>

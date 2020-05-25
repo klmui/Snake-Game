@@ -80,8 +80,14 @@ function Snake() {
   this.checkCollision = function() {
     for (var i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
+        // Show modal
+        $("#gameOver").modal("show");
+        $(".modal-body").text("You died! Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
+
         this.total = 0;
         this.tail = [];
+        this.x = 0;
+        this.y = 0;
       }  
     }
   }

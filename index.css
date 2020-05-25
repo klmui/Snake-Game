@@ -2,7 +2,6 @@ body {
   background: #4CA1AF;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #C4E0E5, #4CA1AF);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #C4E0E5, #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  font-family: 'Comic sans MS';
 }
 
 canvas {
@@ -18,6 +17,7 @@ canvas {
 }
 
 .welcomeText {
+  font-family: cursive;
   text-align: center;
   margin-top: 75px;
   margin-bottom: 110px;
@@ -28,10 +28,33 @@ canvas {
 }
 
 .sideCol {
+  font-family: cursive;
   border-left: 3px solid black;
   height: 100vh;
 }
 
 .sideContent {
   margin-top: 75px;
+}
+
+.topPlayers {
+  font-weight: 500;
+  margin-top: 25px;
+  font-size: x-large;
+}
+
+.modal {
+  margin: 200px auto;
+}
+
+.audio {
+  font-family: cursive;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.controls {
+  font-family: cursive;
+  text-align: center;
+  margin-top: 250px;
 }
