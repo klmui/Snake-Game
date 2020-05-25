@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body onload="playAudio()">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-2">
+        <div class="col-3">
           <div class="controls">
             <p>Grow bigger by eating the red apple.</p>
             <p>Don't run into yourself!</p>
@@ -30,8 +30,13 @@
           </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-6">
           <h1 class="welcomeText">Welcome to the <em>Snake Game</em> 🐍</h1>
+          <div class="modes">
+            <button type="button" class="btn btn-outline-success mr-3" id="easy" onclick="easyClick()">Easy</button>
+            <button type="button" class="btn btn-outline-info mr-3" id="medium" onclick="mediumClick()">Medium</button>
+            <button type="button" class="btn btn-outline-danger" id="hard" onclick="hardClick()">Hard</button>
+          </div>
           <h2 class="score"></h2>
           <div class="canvasContainer">
             <canvas class="canvas" height="300" width="300"></canvas>
@@ -45,9 +50,9 @@
           </div>
         </div>
   
-        <div class="col-2 sideCol">
+        <div class="col-3 rightCol">
           <div class="sideContent">
-            <h2 style="white-space: nowrap;">Top Players - Hard Mode</h2>
+            <h2 style="white-space: nowrap; text-align: center;">Top Players - Hard Mode</h2>
             <ol class="topPlayers">
               <li>
                 hi
@@ -87,9 +92,66 @@
   <script type="text/javascript" src="snake.js"></script>
   <script type="text/javascript" src="draw.js"></script>
   <script>
+    // Play music
     var x = document.getElementById("myAudio"); 
     function playAudio() {
       x.play();
+    }
+
+    var mode = "easy";
+    changeBtnColor(mode, "easy");
+
+    function easyClick() {
+      resetGame();
+      changeBtnColor(mode, "easy");
+    }
+
+    function mediumClick() {
+      resetGame();
+      changeBtnColor(mode, "medium");
+    }
+
+    function hardClick() {
+      resetGame();
+      changeBtnColor(mode, "hard");
+    }
+
+    function resetGame() {
+      snake.total = 0;
+      snake.tail = [];
+      snake.x = 0;
+      snake.y = 0;
+      fruit.pickLocation();
+    }
+
+    function changeBtnColor(currentMode, newMode) {
+      if (currentMode === "easy") {
+        $("#easy").removeClass('btn btn-success');
+        $("#easy").addClass('btn btn-outline-success');
+      } else if (currentMode === "medium") {
+        $("#medium").removeClass('btn btn-info');
+        $("#medium").addClass('btn btn-outline-info');
+      } else if (currentMode === "hard") {
+        $("#hard").removeClass('btn btn-danger');
+        $("#hard").addClass('btn btn-outline-danger');
+      }
+
+      if (newMode === "easy") {
+        $("#easy").removeClass('btn btn-outline-success');
+        $("#easy").addClass('btn btn-success');
+        interval = 230;
+      } else if (newMode === "medium") {
+        $("#medium").removeClass('btn btn-outline-info');
+        $("#medium").addClass('btn btn-info');
+        interval = 215;
+      } else if (newMode === "hard") {
+        $("#hard").removeClass('btn btn-outline-danger');
+        $("#hard").addClass('btn btn-danger');
+        interval = 200;
+      }
+
+      mode = newMode;
+      setup();
     }
   </script>
 </html>

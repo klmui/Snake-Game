@@ -7,8 +7,10 @@ const columns = canvas.width / scale;
 
 var snake;
 
+var interval = 200;
+
 // Wrap it in parenthesis and put parenthesis after function to call right away
-(function setup() {
+function setup() {
   snake = new Snake();
   fruit = new Fruit();
   fruit.pickLocation();
@@ -26,9 +28,12 @@ var snake;
     }
 
     snake.checkCollision();
+    console.log(interval);
     document.querySelector('.score').innerText = "Score: " + snake.total;
-  }, 200);
-}());
+  }, interval);
+};
+
+setup();
 
 window.addEventListener('keydown', ((event) => {
   const direction = event.key.replace('Arrow', '');

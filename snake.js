@@ -104,10 +104,7 @@ function Snake() {
         $("#gameOver").modal("show");
         $(".modal-body").text("You died! Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
 
-        this.total = 0;
-        this.tail = [];
-        this.x = 0;
-        this.y = 0;
+        resetGame();
       }  
     }
   }
