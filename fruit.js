@@ -10,7 +10,9 @@ function Fruit() {
   }
 
   this.draw = function() {
+    var apple = new Image();
+    apple.src = "apple.jpeg";
     ctx.fillStyle = "red";
-    ctx.fillRect(this.x, this.y, scale, scale);
+    ctx.drawImage(apple, this.x, this.y, scale, scale);
   }
 }

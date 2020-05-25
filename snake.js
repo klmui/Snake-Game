@@ -8,7 +8,7 @@ function Snake() {
   this.mode = "easy";
 
   this.draw = function () {
-    ctx.fillStyle = "#FFFFFF";
+    ctx.fillStyle = "yellow";
 
     for (let i = 0; i < this.tail.length; i++) {
       ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
@@ -92,6 +92,8 @@ function Snake() {
   this.eat = function(fruit) {
     if (this.x === fruit.x && this.y === fruit.y) {
       this.total++;
+      var chomp = new Audio("aud_chomp.mp3");
+      chomp.play();
       return true;
     }
 
