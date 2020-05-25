@@ -140,26 +140,25 @@ function Snake() {
                   success: function () { 
                     $("#gameOver").modal("show");
                     $(".modal-body").text("Your score is " + total + "! Congrats " + name + " on earning a top spot!");
+                    resetScoreBoard();
                     resetGame();
-                    setupScoreboard();
                   },
                   error: function() {
-                    alert('Error updating scoreboard :(');
-                          
-                  },
-                  error: function() {
-                    alert('Error loading top players :(');
+                    alert('Error updating scoreboard :(');    
                   }
                 });
               }
             }
           }
         }
-         // Show modal
-         $("#gameOver").modal("show");
-         $(".modal-body").text("Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
-         
-         resetGame();
+        if (counter != 1) {
+          // Show losing modal
+          $("#gameOver").modal("show");
+          $(".modal-body").text("Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
+          
+          resetScoreBoard();
+          resetGame();
+        }
       },
       error: function() {
         alert('Error loading top players :(');

@@ -12,10 +12,6 @@ var interval = 200;
 var setupVar;
 
 function setupScoreboard() {
-  // Clear scoreboard
-  $("#hard").empty();
-  $("#medium").empty();
-  $("#easy").empty();
 
   // For medal distribution
   this.hardCounter = 3;
@@ -38,6 +34,27 @@ function setupScoreboard() {
   });
 }
 setupScoreboard();
+
+function resetScoreBoard() {
+  document.getElementById("hard").innerHTML = "";
+  document.getElementById("medium").innerHTML = "";
+  document.getElementById("easy").innerHTML = "";
+
+  // Get top players
+  $.ajax({
+    type: 'GET',
+    url: './topUsers.php',
+    dataType: 'json',
+    success: function (users) {
+      $.each(users, function (index, user) {
+        addPlayer(user);
+      });
+    },
+    error: function() {
+      alert('Error loading top players :(');
+    }
+  });
+}
 
 function addPlayer(user) {
   var list = document.getElementById(user.mode);
