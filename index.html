@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body onload="playAudio()">
+  <body onload="playAudio(); easyClick()">
     <div class="container-fluid">
       <div class="row">
         <div class="col-3">
@@ -109,22 +109,23 @@
     }
 
     mode = "easy";
-    snake.mode = "easy";
-    changeBtnColor(mode, "easy");
 
     function easyClick() {
       resetGame();
       changeBtnColor(mode, "easy");
+      snake.mode = "easy";
     }
 
     function mediumClick() {
       resetGame();
       changeBtnColor(mode, "medium");
+      snake.mode = "medium";
     }
 
     function hardClick() {
       resetGame();
       changeBtnColor(mode, "hard");
+      snake.mode = "hard";
     }
 
     function resetGame() {
@@ -150,19 +151,18 @@
       if (newMode === "easy") {
         $("#easyBtn").removeClass('btn btn-outline-success');
         $("#easyBtn").addClass('btn btn-success');
-        interval = 230;
+        interval = 100;
       } else if (newMode === "medium") {
         $("#mediumBtn").removeClass('btn btn-outline-warning');
         $("#mediumBtn").addClass('btn btn-warning');
-        interval = 190;
+        interval = 70;
       } else if (newMode === "hard") {
         $("#hardBtn").removeClass('btn btn-outline-danger');
         $("#hardBtn").addClass('btn btn-danger');
-        interval = 150;
+        interval = 40;
       }
 
       mode = newMode;
-      snake.mode = newMode;
       setup();
     }
   </script>

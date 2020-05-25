@@ -12,6 +12,16 @@ var interval = 200;
 var setupVar;
 
 function setupScoreboard() {
+  // Clear scoreboard
+  $("#hard").empty();
+  $("#medium").empty();
+  $("#easy").empty();
+
+  // For medal distribution
+  this.hardCounter = 3;
+  this.mediumCounter = 3;
+  this.easyCounter = 3;
+
   // Get top players
   $.ajax({
     type: 'GET',
@@ -32,17 +42,62 @@ setupScoreboard();
 function addPlayer(user) {
   var list = document.getElementById(user.mode);
   if (user.mode === 'hard') {
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(user.name + ' - ' + user.score));
-    list.appendChild(entry);
+    if (hardCounter == 3) {
+      // Gold
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥇"));
+      list.appendChild(entry);
+      this.hardCounter--;
+    } else if (hardCounter == 2) {
+      // Silver
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥈"));
+      list.appendChild(entry);
+      this.hardCounter--;
+    } else {
+      // Bronze
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥉"));
+      list.appendChild(entry);
+    }
   } else if (user.mode === 'medium') {
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(user.name + ' - ' + user.score));
-    list.appendChild(entry);
+    if (mediumCounter == 3) {
+      // Gold
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥇"));
+      list.appendChild(entry);
+      this.mediumCounter--;
+    } else if (mediumCounter == 2) {
+      // Silver
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥈"));
+      list.appendChild(entry);
+      this.mediumCounter--;
+    } else {
+      // Bronze
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥉"));
+      list.appendChild(entry);
+    }
   } else if (user.mode === 'easy') {
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(user.name + ' - ' + user.score));
-    list.appendChild(entry);
+    if (easyCounter == 3) {
+      // Gold
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥇"));
+      list.appendChild(entry);
+      this.easyCounter--;
+    } else if (easyCounter == 2) {
+      // Silver
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥈"));
+      list.appendChild(entry);
+      this.easyCounter--;
+    } else {
+      // Bronze
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(user.name + ' - ' + user.score + " 🥉"));
+      list.appendChild(entry);
+    }
   }
 }
 

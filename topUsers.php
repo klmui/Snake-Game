@@ -18,7 +18,28 @@
 
      parse_str(file_get_contents("php://input"), $putVars); // Get data sent in
      // Update scoreboard
-     if (isset($putVars['name']) && isset($putVars['score'])) {
+     if (isset($putVars['name']) && isset($putVars['score']) && isset($putVars['mode'])) {
+      // Shift scoreboard down starting from $index if they got 1st or 2nd place
+      if (!($index + 1 % 3 == 0)) {
+        $endOfMode = 0;
+        for ($i = count($json_arr); $i >= 0; $i--) {
+          if ($json_arr[$i]['mode'] == $putVars['mode']) {
+            $endOfMode = $i;
+            break;
+          }
+        }
+
+        // Only shift one over to the right
+        if ($endOfMode - 1 == $index) {
+          $json_arr[$endOfMode] = $json_arr[$endOfMode - 1];
+        } else {
+          // Shift over twice
+          $json_arr[$endOfMode] = $json_arr[$endOfMode - 1];
+          $json_arr[$endOfMode - 1] = $json_arr[$endOfMode - 2];
+        }
+      } 
+
+       // Update array here
        $json_arr[$index]['name'] = $putVars['name'];
        $json_arr[$index]['score'] = $putVars['score'];
      }

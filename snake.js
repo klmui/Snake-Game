@@ -5,7 +5,7 @@ function Snake() {
   this.ySpeed = 0;
   this.total = 0;
   this.tail = [];
-  this.mode = "easy";
+  this.mode;
 
   this.draw = function () {
     ctx.fillStyle = "yellow";
@@ -122,11 +122,8 @@ function Snake() {
         for (let index = 0; index < users.length; index++) {
           // Note that 'this' refers to user
           if (users[index].mode === modeAtFinished) {
-            console.log(total);
-            console.log(users[index].score);
             if (total >= users[index].score) {
-              console.log("RETURNED " + index);
-              if (index > 0 && counter == 0) {
+              if (counter == 0) {
                 counter++;
                 // Update at index
                 var name = prompt("Congrats on earning a top spot! Please enter your name.");
@@ -137,13 +134,12 @@ function Snake() {
                   url: 'topUsers.php/' + index,
                   data: {
                     name: name,
-                    score: total                    
+                    score: total,
+                    mode: modeAtFinished                  
                   },
                   success: function () { 
                     $("#gameOver").modal("show");
                     $(".modal-body").text("Your score is " + total + "! Congrats " + name + " on earning a top spot!");
-                    resetGame();
-                    //setupScoreboard()
                   },
                   error: function() {
                     alert('Error updating scoreboard :(');
@@ -153,17 +149,16 @@ function Snake() {
                     alert('Error loading top players :(');
                   }
                 });
-              } else {
-                  // Show modal
-                  $("#gameOver").modal("show");
-                  $(".modal-body").text("Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
-                  
-                  resetGame();
-                  //setupScoreboard()
               }
             }
           }
         }
+         // Show modal
+         $("#gameOver").modal("show");
+         $(".modal-body").text("Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
+         
+         resetGame();
+         setupScoreboard()
       },
       error: function() {
         alert('Error loading top players :(');
