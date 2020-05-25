@@ -12,7 +12,6 @@ var interval = 200;
 var setupVar;
 
 function setupScoreboard() {
-  console.log("CALLED");
   // Clear scoreboard
   $("#hard").empty();
   $("#medium").empty();
