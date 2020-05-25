@@ -1,10 +1,5 @@
 [
     {
-        "name": "Kenny",
-        "score": "0",
-        "mode": "hard"
-    },
-    {
         "name": "null",
         "score": "0",
         "mode": "hard"
@@ -15,12 +10,17 @@
         "mode": "hard"
     },
     {
-        "name": "Kenny2",
+        "name": "null",
+        "score": "0",
+        "mode": "hard"
+    },
+    {
+        "name": "null",
         "score": "0",
         "mode": "medium"
     },
     {
-        "name": "Kenny",
+        "name": "null",
         "score": "0",
         "mode": "medium"
     },
@@ -35,7 +35,7 @@
         "mode": "easy"
     },
     {
-        "name": "Kenny",
+        "name": "null",
         "score": "0",
         "mode": "easy"
     },
