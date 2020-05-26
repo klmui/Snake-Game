@@ -104,7 +104,6 @@ function Snake() {
     for (var i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
         // Check if score is a top score
-        console.log("CHECK ENDGAME");
         clearInterval(setupVar);
         this.endGame();
         break;

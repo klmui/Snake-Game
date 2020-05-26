@@ -37,11 +37,13 @@ function resetScoreBoard() {
   document.getElementById("hard").innerHTML = "";
   document.getElementById("medium").innerHTML = "";
   document.getElementById("easy").innerHTML = "";
+  console.log("BEFORE: " + this.hardCounter);
 
   // For medal distribution
   this.hardCounter = 3;
   this.mediumCounter = 3;
   this.easyCounter = 3;
+  console.log("AFTER: " + this.hardCounter);
 
   // Get top players
   $.ajax({
