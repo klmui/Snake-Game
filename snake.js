@@ -120,8 +120,6 @@ function Snake() {
       dataType: 'json',
       success: function (users) {
         let counter = 0;
-        console.log(counter);
-        console.log(modeAtFinished);
         for (let index = 0; index < users.length; index++) {
           // Note that 'this' refers to user
           if (users[index].mode === modeAtFinished) {
