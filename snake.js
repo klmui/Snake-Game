@@ -104,8 +104,10 @@ function Snake() {
     for (var i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
         // Check if score is a top score
+        console.log("CHECK ENDGAME");
+        clearInterval(setupVar);
         this.endGame();
-        return;
+        break;
       }  
     }
   }
@@ -119,11 +121,14 @@ function Snake() {
       dataType: 'json',
       success: function (users) {
         let counter = 0;
+        console.log(counter);
+        console.log(modeAtFinished);
         for (let index = 0; index < users.length; index++) {
           // Note that 'this' refers to user
           if (users[index].mode === modeAtFinished) {
             if (total >= users[index].score) {
               if (counter == 0) {
+                console.log("COUNTER "+ counter);
                 counter++;
                 // Update at index
                 var name = prompt("Congrats on earning a top spot! Please enter your name.");
@@ -141,7 +146,6 @@ function Snake() {
                     $("#gameOver").modal("show");
                     $(".modal-body").text("Your score is " + total + "! Congrats " + name + " on earning a top spot!");
                     resetScoreBoard();
-                    resetGame();
                   },
                   error: function() {
                     alert('Error updating scoreboard :(');    
@@ -157,7 +161,6 @@ function Snake() {
           $(".modal-body").text("Your score is " + snake.total + "! Click 'Play Again' to earn a top spot!");
           
           resetScoreBoard();
-          resetGame();
         }
       },
       error: function() {

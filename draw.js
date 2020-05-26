@@ -9,8 +9,6 @@ var snake;
 
 var interval = 200;
 
-var setupVar;
-
 function setupScoreboard() {
 
   // For medal distribution
