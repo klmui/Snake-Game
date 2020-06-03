@@ -4,7 +4,14 @@ Classic Snake Game created using HTML, CSS, JavaScript, Firebase Functions + Nod
 Play now: https://cool-snake-game.herokuapp.com/
 
 ## Run Locally
+<hr>
 
 1. Clone this repository.
-2. Run the command 'php -S localhost:4000'.
-3. Open up "localhost:4000/index.html" in Chrome.
+2. Open up the index.html file in Chrome.
+
+## Credits
+<hr>
+
+The credits for the Snake Game part of this project go to CodeWithKris.
+
+This is the video https://www.youtube.com/watch?v=21eSpMtJwrc.
