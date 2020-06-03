@@ -116,7 +116,7 @@ function Snake() {
     total = this.total;
     $.ajax({
       type: 'GET',
-      url: './topUsers.php',
+      url: 'https://us-central1-snake-game-8decc.cloudfunctions.net/api/users',
       dataType: 'json',
       success: function (users) {
         let counter = 0;
@@ -125,24 +125,24 @@ function Snake() {
           if (users[index].mode === modeAtFinished) {
             if (total >= users[index].score) {
               if (counter == 0) {
-                console.log("COUNTER "+ counter);
                 counter++;
                 // Update at index
                 var name = prompt("Congrats on earning a top spot! Please enter your name.");
           
                 // Send put request to update score board
                 $.ajax({
-                  type: 'PUT',
-                  url: 'topUsers.php/' + index,
+                  type: 'POST',
+                  url: 'https://us-central1-snake-game-8decc.cloudfunctions.net/api/user/' + users[index].userId,
                   data: {
+                    userId: users[index].userId,
                     name: name,
                     score: total,
                     mode: modeAtFinished                  
                   },
-                  success: function () { 
+                  success: function () {
+                    resetScoreBoard(); 
                     $("#gameOver").modal("show");
                     $(".modal-body").text("Your score is " + total + "! Congrats " + name + " on earning a top spot!");
-                    resetScoreBoard();
                   },
                   error: function() {
                     alert('Error updating scoreboard :(');    

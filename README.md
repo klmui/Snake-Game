@@ -1,5 +1,5 @@
 # Snake-Game 🐍
-Classic Snake Game created using HTML, CSS, JavaScript, PHP, and Bootstrap. Play and earn a top spot in either easy, medium, or hard mode!
+Classic Snake Game created using HTML, CSS, JavaScript, Firebase Functions + Node.js, and Bootstrap. Play and earn a top spot in either easy, medium, or hard mode!
 
 Play now: https://cool-snake-game.herokuapp.com/
 
