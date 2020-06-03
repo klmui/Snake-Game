@@ -13,3 +13,5 @@ Play now: https://cool-snake-game.herokuapp.com/
 The credits for the Snake Game part of this project go to CodeWithKris.
 
 This is the video https://www.youtube.com/watch?v=21eSpMtJwrc.
+
+I added the different modes, leaderboard, style, and sounds.
